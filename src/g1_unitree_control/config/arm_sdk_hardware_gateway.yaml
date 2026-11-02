@@ -1,0 +1,95 @@
+g1_arm_sdk_hardware_gateway:
+  ros__parameters:
+    active_arm: right
+    state_topic: /lowstate
+    trajectory_topic: /g1/arm_gateway/trajectory
+    command_topic: /arm_sdk
+    preview_topic: /g1/arm_gateway/command_preview
+    diagnostics_topic: /g1/arm_gateway/diagnostics
+    trajectory_log_directory: /home/syf/g1_upper_body_ws/logs/endpoint_motion
+
+    # Both values are startup-only. With this default, the process does not
+    # create an /arm_sdk publisher at all.
+    hardware_output_enabled: false
+    hardware_authorization: ""
+
+    control_rate_hz: 100.0
+    state_timeout_s: 0.10
+
+    # Read-only ServiceList query (API 1003). On the current G1 firmware,
+    # status 0 means running and status 1 means stopped.
+    service_check_enabled: true
+    service_query_period_s: 1.0
+    service_state_timeout_s: 3.0
+    # The high-level arm_sdk contract runs inside the main motion service:
+    # g1_arm_example and ai_sport must both be active in locked standing mode.
+    required_active_services: [g1_arm_example, ai_sport]
+    required_inactive_services: [auto_test_arm, auto_test_low]
+
+    start_tolerance_rad: 0.05
+    joint_limit_margin_rad: 0.02
+    max_velocity_rad_s: 0.60
+    max_acceleration_rad_s2: 1.50
+    max_command_step_rad: 0.006
+
+    tracking_warning_rad: 0.06
+    tracking_pause_rad: 0.10
+    tracking_hard_limit_rad: 0.16
+    # Reject sustained unexpected motion, while tolerating isolated LowState dq
+    # spikes during high-level arm takeover. The 2.5 rad/s instantaneous limit
+    # remains an unconditional latch.
+    max_measured_velocity_rad_s: 0.50
+    measured_velocity_persistence_s: 0.15
+    measured_velocity_hard_limit_rad_s: 2.50
+    velocity_recovery_exit_rad_s: 0.10
+    velocity_recovery_settle_s: 0.50
+    # Crossing this time raises a persistent warning but keeps damped support
+    # active. Only the stronger recovery hard limit below latches output off.
+    velocity_recovery_timeout_s: 3.0
+    velocity_recovery_hard_limit_rad_s: 1.50
+    # LowState does not expose motor current. tau_est is used as the available
+    # overload proxy. Large arm joints use 20 Nm continuous / 25 Nm short peak;
+    # wrist pitch/yaw use 4 Nm continuous / 5 Nm short peak, matching the URDF
+    # effort classes. Persistent overload enters supported damped recovery.
+    max_estimated_arm_torque_nm: 25.0
+    torque_peak_duration_s: 1.0
+    max_estimated_waist_torque_nm: 25.0
+    # Alarm threshold only while already armed: keep support active so the arm
+    # can move to a lower-load pose. A hot robot cannot be newly armed.
+    max_motor_temperature_c: 85.0
+    # motor mode 1 is the active FOC state. L2+B changes the upper body to
+    # mode 0; arm/reset must remain unavailable until native mode is restored.
+    required_upper_body_motor_mode: 1
+
+    # Match the previously hardware-tested remote-teach takeover: establish
+    # full arm_sdk authority immediately at the measured pose with a tau_est
+    # anchor, hold it first, then blend only the gravity model.
+    takeover_anchor_hold_s: 2.0
+    release_ramp_s: 2.0
+    command_weight: 1.0
+    arm_kp: 55.0
+    arm_kd: 3.0
+    right_wrist_roll_kp: 40.0
+    right_wrist_roll_kd: 3.5
+    left_wrist_roll_kp: 40.0
+    left_wrist_roll_kd: 3.5
+    velocity_recovery_kp: 10.0
+    velocity_recovery_kd: 3.0
+    gravity_feedforward_enabled: true
+    gravity_urdf_path: /home/syf/unitree_ws/unitree_ros/robots/g1_description/g1_29dof_lock_waist_rev_1_0.urdf
+    right_payload_fit_path: /home/syf/g1_upper_body_ws/calibration/right_arm_camera_fit_20260824_185416.yaml
+    left_payload_fit_path: /home/syf/g1_upper_body_ws/calibration/left_arm_right_copy_seed_20260908.yaml
+    feedforward_blend_s: 2.0
+    tau_anchor_sample_count: 200
+    tau_anchor_max_spread_nm: 0.75
+    # This 29-DoF G1 has only waist yaw (12) active; 13 and 14 report mode=0,
+    # voltage=0 and must not receive stiffness commands.
+    controlled_waist_indices: [12]
+    # Moderate PD plus bounded low-frequency disturbance compensation. During
+    # a moving waist curve the integral gain is reduced; detected stiction may
+    # use the full gain, while breakaway/reversal bleeds torque at a bounded
+    # rate. Runtime changes remain guarded and atomic.
+    waist_kp: 60.0
+    waist_kd: 4.5
+    waist_ki: 20.0
+    waist_integral_torque_limit_nm: 1.2

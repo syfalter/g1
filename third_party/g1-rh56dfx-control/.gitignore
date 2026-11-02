@@ -1,0 +1,16 @@
+/build/
+/Testing/
+/log/
+/data/
+/run/
+/.tools/
+/.github-cli/
+
+*.o
+*.a
+*.so
+*.swp
+*~
+__pycache__/
+*.pyc
+/captures

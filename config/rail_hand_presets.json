@@ -1,0 +1,308 @@
+{
+  "schema": "g1_rail_hand_presets_v1",
+  "identity": {
+    "urdf_sha256": "ff85f3e90223a7191f77d661718b7746dea71c0a4ca7ba16b980fbfa776f0780",
+    "hand_mapping_sha256": "38986df811cc7102683f29109dd5b1c2719d784e17d76132040f2c6d44fde553",
+    "reference_link": "right_wrist_yaw_link"
+  },
+  "mapping": {
+    "order": [
+      "little_1",
+      "ring_1",
+      "middle_1",
+      "index_1",
+      "thumb_2",
+      "thumb_1"
+    ],
+    "open_model_q": [
+      0.13430029546065,
+      0.13430029546065,
+      0.13430029546065,
+      0.13430029546065,
+      0.0,
+      0.0
+    ],
+    "closed_model_q": [
+      1.2,
+      1.2,
+      1.2,
+      1.2,
+      0.4,
+      0.8
+    ]
+  },
+  "hands": {
+    "open": {
+      "code": 0,
+      "contact": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "contact_monitoring": true,
+      "current": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "current_limit": [
+        1400,
+        1400,
+        1400,
+        1400,
+        1400,
+        1400
+      ],
+      "error": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "feedback_q": [
+        0.0,
+        0.0,
+        0.9990000128746033,
+        0.9959999918937683,
+        0.996999979019165,
+        0.0
+      ],
+      "force": [
+        -59,
+        -67,
+        113,
+        109,
+        -1,
+        3
+      ],
+      "force_limit": [
+        500,
+        500,
+        500,
+        500,
+        500,
+        259
+      ],
+      "hand": "right",
+      "last_command_id": 1789906382394629,
+      "lost_count": 0,
+      "message": "ok",
+      "online": true,
+      "status": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "target_q": [
+        0.0,
+        0.0,
+        0.9990000128746033,
+        0.9959999918937683,
+        0.996999979019165,
+        0.0
+      ],
+      "temperature": [
+        38,
+        38,
+        38,
+        38,
+        34,
+        38
+      ],
+      "timestamp_ms": 1789906389988
+    },
+    "grip": {
+      "code": 0,
+      "contact": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "contact_monitoring": true,
+      "current": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "current_limit": [
+        1400,
+        1400,
+        1400,
+        1400,
+        1400,
+        1400
+      ],
+      "error": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "feedback_q": [
+        0.0,
+        0.0,
+        0.0,
+        0.003000000026077032,
+        0.9940000176429749,
+        0.8100000023841858
+      ],
+      "force": [
+        -83,
+        -83,
+        136,
+        108,
+        -7,
+        -62
+      ],
+      "force_limit": [
+        500,
+        500,
+        500,
+        500,
+        500,
+        259
+      ],
+      "hand": "right",
+      "last_command_id": 1789967074447700,
+      "lost_count": 0,
+      "message": "ok",
+      "online": true,
+      "status": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "target_q": [
+        0.0,
+        0.0,
+        0.0,
+        0.003000000026077032,
+        0.9940000176429749,
+        0.824999988079071
+      ],
+      "temperature": [
+        38,
+        38,
+        38,
+        38,
+        34,
+        36
+      ],
+      "timestamp_ms": 1789970822465
+    },
+    "pull_grip": {
+      "code": 0,
+      "contact": [
+        false,
+        false,
+        false,
+        false,
+        true,
+        false
+      ],
+      "contact_monitoring": true,
+      "current": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "current_limit": [
+        1400,
+        1400,
+        1400,
+        1400,
+        1400,
+        1400
+      ],
+      "error": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "feedback_q": [
+        0.0,
+        0.0,
+        0.5099999904632568,
+        0.44699999690055847,
+        0.9710000157356262,
+        0.0
+      ],
+      "force": [
+        -81,
+        -93,
+        786,
+        693,
+        562,
+        -471
+      ],
+      "force_limit": [
+        500,
+        500,
+        500,
+        500,
+        500,
+        259
+      ],
+      "hand": "right",
+      "last_command_id": 1790135576771256,
+      "lost_count": 0,
+      "message": "ok",
+      "online": true,
+      "status": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "target_q": [
+        0.0,
+        0.0,
+        0.5099999904632568,
+        0.44699999690055847,
+        0.972000002861023,
+        0.0
+      ],
+      "temperature": [
+        36,
+        38,
+        38,
+        36,
+        34,
+        36
+      ],
+      "timestamp_ms": 1790135607506
+    }
+  },
+  "saved_at": "2026-09-23T11:53:27.717987+08:00",
+  "source": "/home/syf/g1_upper_body_ws/data/task_sessions/20260923_112558_931845"
+}

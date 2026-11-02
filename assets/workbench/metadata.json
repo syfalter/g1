@@ -1,0 +1,25 @@
+{
+  "source": "/home/syf/unitree_ws/\u53f0\u9762.STEP",
+  "bounds_m": [
+    [
+      0.0,
+      -0.5,
+      0.0
+    ],
+    [
+      1.2771281819617808,
+      0.5,
+      0.8300000000000002
+    ]
+  ],
+  "dimensions_depth_width_height_m": [
+    1.2771281819617808,
+    1.0,
+    0.8300000000000002
+  ],
+  "tabletop_local_z_m": 0.83,
+  "pelvis_front_offset_m": 0.061431244015693665,
+  "zero_pose_sole_z_relative_pelvis_m": -0.7922728974794127,
+  "triangles": 16526,
+  "orientation_assumption": "CAD +Y -> robot +X, CAD +X -> robot -Y"
+}

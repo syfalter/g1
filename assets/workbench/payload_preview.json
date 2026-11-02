@@ -1,0 +1,9 @@
+{
+  "scope": "Shared workbench and real endpoint planning geometry; gravity calibration remains separate",
+  "connector_length_m": 0.04,
+  "connector_radius_m": 0.03,
+  "hand_model": "RH56DFX",
+  "hand_geometry": "Community RH56DFX model; static open pose; approximate mount alignment",
+  "mounts": "Both hands offset 0.04 m along local wrist X; mirrored original lateral mounting offsets",
+  "camera_geometry": "Not modeled separately; requires dimensions before hardware validation"
+}

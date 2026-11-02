@@ -1,0 +1,57 @@
+Panels:
+  - Class: g1_tcp_diagnostics/TcpAPanel
+    Name: 实验A · 食指TCP
+Visualization Manager:
+  Class: ""
+  Transformation:
+    Current:
+      Class: rviz_default_plugins/TF
+  Displays:
+    - Class: rviz_default_plugins/RobotModel
+      Name: 原工程机器人 · 实际TF加近似手模型
+      Enabled: true
+      Alpha: 0.45
+      Visual Enabled: true
+      Collision Enabled: false
+      Description Source: Topic
+      Description Topic:
+        Value: /robot_description
+        Durability Policy: Transient Local
+        Reliability Policy: Reliable
+        Depth: 1
+    - Class: rviz_default_plugins/MarkerArray
+      Name: 实验A · 原始点/候选点/跟踪差/残差
+      Enabled: true
+      Topic:
+        Value: /g1/tcp_a/markers
+        Durability Policy: Transient Local
+        Reliability Policy: Reliable
+        Depth: 1
+    - Class: rviz_default_plugins/Grid
+      Name: 胯部坐标网格 · 非实测桌面
+      Enabled: true
+      Cell Size: 0.05
+      Plane Cell Count: 20
+      Alpha: 0.2
+  Enabled: true
+  Global Options:
+    Fixed Frame: pelvis
+    Frame Rate: 25
+    Background Color: 32; 34; 38
+  Tools:
+    - Class: rviz_default_plugins/MoveCamera
+    - Class: rviz_default_plugins/Select
+    - Class: rviz_default_plugins/FocusCamera
+  Views:
+    Current:
+      Class: rviz_default_plugins/Orbit
+      Distance: 0.95
+      Focal Point: {X: 0.32, Y: 0.08, Z: 0.2}
+      Pitch: 0.45
+      Yaw: 0.6
+      Target Frame: pelvis
+Window Geometry:
+  Width: 1440
+  Height: 950
+  实验A · 食指TCP:
+    collapsed: false

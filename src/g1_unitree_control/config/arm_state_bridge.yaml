@@ -1,0 +1,10 @@
+arm_state_bridge:
+  ros__parameters:
+    input_topic: /lowstate
+    output_topic: /g1/arm_joint_states
+    diagnostics_topic: /g1/arm_state_bridge/diagnostics
+    publish_rate_hz: 200.0
+    state_timeout_s: 0.10
+    expected_mode_machine: 6
+    include_effort: true
+    include_lower_body: false

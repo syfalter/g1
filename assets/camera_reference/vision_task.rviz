@@ -1,0 +1,70 @@
+Panels:
+  - Class: rviz_common/Displays
+    Name: Displays
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Class: rviz_default_plugins/PointCloud2
+      Name: Measured RGB-D surface - snapshot
+      Enabled: true
+      Topic:
+        Value: /g1/vision_rgbd_surface
+        Depth: 1
+        Reliability Policy: Reliable
+        Durability Policy: Transient Local
+        History Policy: Keep Last
+      Style: Flat Squares
+      Size (m): 0.004
+      Size (Pixels): 3
+      Alpha: 1
+      Color Transformer: RGB8
+      Position Transformer: XYZ
+      Decay Time: 0
+    - Class: rviz_default_plugins/RobotModel
+      Name: Robot - offline pose
+      Enabled: true
+      Alpha: 0.55
+      Visual Enabled: true
+      Collision Enabled: false
+      Description Source: Topic
+      Description Topic:
+        Value: /robot_description
+        Depth: 1
+        Reliability Policy: Reliable
+        Durability Policy: Transient Local
+        History Policy: Keep Last
+      TF Prefix: ""
+    - Class: rviz_default_plugins/MarkerArray
+      Name: Vision task - nominal transform
+      Enabled: true
+      Topic:
+        Value: /g1/vision_task_preview
+        Depth: 1
+        Reliability Policy: Reliable
+        Durability Policy: Transient Local
+        History Policy: Keep Last
+  Enabled: true
+  Global Options:
+    Background Color: 32; 34; 38
+    Fixed Frame: torso_link
+    Frame Rate: 30
+  Name: root
+  Tools:
+    - Class: rviz_default_plugins/MoveCamera
+    - Class: rviz_default_plugins/Select
+    - Class: rviz_default_plugins/FocusCamera
+  Views:
+    Current:
+      Class: rviz_default_plugins/Orbit
+      Distance: 1.15
+      Focal Point:
+        X: 0.35
+        Y: 0.0
+        Z: 0.05
+      Pitch: 0.28
+      Yaw: 0.75
+      Target Frame: torso_link
+      Name: Vision task preview
+Window Geometry:
+  Width: 1400
+  Height: 900

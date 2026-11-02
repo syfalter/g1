@@ -1,0 +1,168 @@
+Panels:
+  - Class: rviz_common/Displays
+    Name: Displays
+  - Class: g1_unitree_control/G1EndpointPanel
+    Name: G1 Endpoint
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Alpha: 0.5
+      Cell Size: 0.25
+      Class: rviz_default_plugins/Grid
+      Color: 160; 160; 164
+      Enabled: true
+      Name: Ground Grid
+      Plane: XY
+      Plane Cell Count: 20
+      Reference Frame: world
+    - Class: moveit_rviz_plugin/MotionPlanning
+      Enabled: true
+      MoveIt_Allow_Approximate_IK: true
+      MoveIt_Allow_External_Program: true
+      MoveIt_Use_Constraint_Aware_IK: true
+      Move Group Namespace: ""
+      Name: MotionPlanning
+      Planned Path:
+        Loop Animation: false
+        Robot Alpha: 0.45
+        Show Robot Collision: false
+        Show Robot Visual: true
+        State Display Time: 0.05 s
+        Trajectory Topic: /display_planned_path
+      Planning Metrics:
+        Payload: 1
+        Show Joint Torques: false
+        Show Manipulability: false
+      Planning Request:
+        Colliding Link Color: 255; 0; 0
+        Goal State Alpha: 1
+        Goal State Color: 250; 128; 0
+        Interactive Marker Size: 0.18
+        Joint Violation Color: 255; 0; 255
+        Planning Group: right_arm
+        Query Goal State: true
+        Query Start State: false
+        Show Workspace: false
+        Start State Alpha: 1
+        Start State Color: 0; 255; 0
+      Planning Scene Topic: /monitored_planning_scene
+      Robot Description: robot_description
+      Scene Geometry:
+        Scene Alpha: 1
+        Scene Color: 50; 230; 50
+        Show Scene Geometry: true
+        Show Scene Robot: true
+      Scene Robot:
+        Attached Body Color: 150; 50; 150
+        Robot Alpha: 0.35
+        Show Robot Collision: false
+        Show Robot Visual: true
+      Value: true
+    - Alpha: 0.65
+      Class: rviz_default_plugins/RobotModel
+      Collision Enabled: false
+      Description File: ""
+      Description Source: Topic
+      Description Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /planned/robot_description
+      Enabled: true
+      Links:
+        All Links Enabled: false
+        Expand Joint Details: false
+        Expand Link Details: false
+        Expand Tree: false
+        Link Tree Style: Links in Alphabetic Order
+        right_elbow_link:
+          Alpha: 0.65
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        right_hand_collision:
+          Alpha: 0.65
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        right_payload_collision:
+          Alpha: 0.65
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        right_rubber_hand:
+          Alpha: 0.65
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        right_shoulder_pitch_link:
+          Alpha: 0.65
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        right_shoulder_roll_link:
+          Alpha: 0.65
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        right_shoulder_yaw_link:
+          Alpha: 0.65
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        right_tool0:
+          Alpha: 0.65
+          Show Axes: true
+          Show Trail: false
+          Value: true
+        right_wrist_pitch_link:
+          Alpha: 0.65
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        right_wrist_roll_link:
+          Alpha: 0.65
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        right_wrist_yaw_link:
+          Alpha: 0.65
+          Show Axes: false
+          Show Trail: false
+          Value: true
+      Name: Planned Reference
+      TF Prefix: planned/
+      Update Interval: 0
+      Value: true
+      Visual Enabled: true
+  Enabled: true
+  Global Options:
+    Background Color: 32; 34; 38
+    Fixed Frame: world
+    Frame Rate: 30
+  Name: root
+  Tools:
+    - Class: rviz_default_plugins/Interact
+    - Class: rviz_default_plugins/MoveCamera
+    - Class: rviz_default_plugins/Select
+    - Class: rviz_default_plugins/FocusCamera
+    - Class: rviz_default_plugins/Measure
+  Transformation:
+    Current:
+      Class: rviz_default_plugins/TF
+  Views:
+    Current:
+      Class: rviz_default_plugins/Orbit
+      Distance: 2.2
+      Focal Point:
+        X: 0.0
+        Y: 0.0
+        Z: 1.05
+      Name: Current View
+      Pitch: 0.25
+      Target Frame: world
+      Yaw: 1.57
+Window Geometry:
+  Height: 900
+  Width: 1440

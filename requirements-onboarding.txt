@@ -1,0 +1,2 @@
+# Only the hardware-independent onboarding checks; not the full ROS/vision stack.
+numpy>=1.21,<2

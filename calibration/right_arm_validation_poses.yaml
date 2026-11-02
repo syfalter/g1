@@ -1,0 +1,9 @@
+# READ-ONLY MoveIt screening; pose_00 is the measured real start.
+# Conservative payload box: 0.300 x 0.140 x 0.120 m.
+# Every listed edge pose_N -> pose_N+1 passed self-collision interpolation.
+joint_names: [right_shoulder_pitch_joint, right_shoulder_roll_joint, right_shoulder_yaw_joint, right_elbow_joint, right_wrist_roll_joint, right_wrist_pitch_joint, right_wrist_yaw_joint]
+poses:
+  - id: 0
+    q: [0.2549044788, -0.2775067091, 0.1025849655, 0.79233706, -0.01523195021, 0.01348369196, 0.002653786913]
+  - id: 1
+    q: [-0.1268894477, -0.5720043713, 0.468252541, 0.3975460377, 0.6429860625, -0.4583451748, 0.699684417]

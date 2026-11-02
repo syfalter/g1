@@ -1,0 +1,17 @@
+# "left"/"left_arm" or "right"/"right_arm".
+string arm
+# Target tool0 pose in torso_link.
+geometry_msgs/Pose target
+# Nearest occupied voxel search radius. Zero uses 0.02 m.
+float64 search_radius
+# Exact KDL IK timeout. Zero uses 0.05 s.
+float64 ik_timeout
+---
+bool voxel_found
+geometry_msgs/Point nearest_voxel_center
+float64 nearest_distance
+uint32 hit_count
+sensor_msgs/JointState seed
+bool ik_success
+sensor_msgs/JointState solution
+string message

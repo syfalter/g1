@@ -1,0 +1,43 @@
+Panels:
+  - Class: g1_tcp_diagnostics/TcpAPanel
+    Name: 实验A · 离线回放
+Visualization Manager:
+  Class: ""
+  Transformation:
+    Current:
+      Class: rviz_default_plugins/TF
+  Displays:
+    - Class: rviz_default_plugins/MarkerArray
+      Name: 离线样本 · 非实时机器人状态
+      Enabled: true
+      Topic:
+        Value: /g1/tcp_a/markers
+        Durability Policy: Transient Local
+        Reliability Policy: Reliable
+        Depth: 1
+    - Class: rviz_default_plugins/Grid
+      Name: 胯部坐标网格 · 非实测桌面
+      Enabled: true
+      Cell Size: 0.05
+      Plane Cell Count: 20
+      Alpha: 0.2
+  Enabled: true
+  Global Options:
+    Fixed Frame: pelvis
+    Frame Rate: 25
+    Background Color: 32; 34; 38
+  Tools:
+    - Class: rviz_default_plugins/MoveCamera
+    - Class: rviz_default_plugins/Select
+    - Class: rviz_default_plugins/FocusCamera
+  Views:
+    Current:
+      Class: rviz_default_plugins/Orbit
+      Distance: 0.65
+      Focal Point: {X: 0.34, Y: 0.13, Z: 0.2}
+      Pitch: 0.45
+      Yaw: 0.6
+      Target Frame: pelvis
+Window Geometry:
+  Width: 1440
+  Height: 950

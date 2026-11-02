@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>g1_tcp_diagnostics</name>
+  <version>0.1.0</version>
+  <description>Pelvis-frame pivot diagnostics; confirmed setup controls reuse the existing task owner.</description>
+  <maintainer email="syf@example.com">syf</maintainer>
+  <license>BSD-3-Clause</license>
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>qtbase5-dev</depend>
+  <depend>pluginlib</depend>
+  <depend>rclcpp</depend>
+  <depend>rviz_common</depend>
+  <depend>rviz_rendering</depend>
+  <depend>std_msgs</depend>
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>visualization_msgs</exec_depend>
+  <exec_depend>diagnostic_msgs</exec_depend>
+  <depend>unitree_hg</depend>
+  <depend>nlohmann_json</depend>
+  <depend>cyclonedds</depend>
+  <exec_depend>python3-numpy</exec_depend>
+  <exec_depend>python3-scipy</exec_depend>
+  <exec_depend>python3-yaml</exec_depend>
+  <exec_depend>python3-opencv</exec_depend>
+  <exec_depend>python3-matplotlib</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
+  <exec_depend>rviz2</exec_depend>
+  <export><build_type>ament_cmake</build_type></export>
+</package>

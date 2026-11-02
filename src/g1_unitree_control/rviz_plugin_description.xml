@@ -1,0 +1,8 @@
+<library path="g1_endpoint_rviz_panel">
+  <class
+    name="g1_unitree_control/G1EndpointPanel"
+    type="g1_unitree_control::G1EndpointPanel"
+    base_class_type="rviz_common::Panel">
+    <description>Fixed G1 endpoint-control status and guarded arm/disarm panel.</description>
+  </class>
+</library>

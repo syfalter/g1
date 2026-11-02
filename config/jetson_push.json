@@ -1,0 +1,5 @@
+{
+  "target": "unitree@192.168.0.249",
+  "root": "/home/unitree/rh56dfx/workspace/execution/action_runtime_v2",
+  "waist_target_rad": -0.015293545089662075
+}

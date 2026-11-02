@@ -1,0 +1,73 @@
+diff --git a/example/g1/CMakeLists.txt b/example/g1/CMakeLists.txt
+index 7026a2e..45cc51f 100644
+--- a/example/g1/CMakeLists.txt
++++ b/example/g1/CMakeLists.txt
+@@ -7,6 +7,61 @@ target_link_libraries(g1_arm5_sdk_dds_example unitree_sdk2)
+ add_executable(g1_arm7_sdk_dds_example high_level/g1_arm7_sdk_dds_example.cpp)
+ target_link_libraries(g1_arm7_sdk_dds_example unitree_sdk2)
+ 
++add_executable(g1_arm_sdk_safe_probe high_level/g1_arm_sdk_safe_probe.cpp)
++target_link_libraries(g1_arm_sdk_safe_probe unitree_sdk2)
++# Keep this safety-critical probe on SDK2's bundled CycloneDDS pair even when a
++# sourced ROS environment prepends a different libddsc to LD_LIBRARY_PATH.
++set_target_properties(g1_arm_sdk_safe_probe PROPERTIES
++    BUILD_RPATH "${CMAKE_SOURCE_DIR}/thirdparty/lib/${CMAKE_SYSTEM_PROCESSOR}")
++target_link_options(g1_arm_sdk_safe_probe PRIVATE "-Wl,--disable-new-dtags")
++
++add_executable(g1_arm_sdk_clear_weight high_level/g1_arm_sdk_clear_weight.cpp)
++target_link_libraries(g1_arm_sdk_clear_weight unitree_sdk2)
++set_target_properties(g1_arm_sdk_clear_weight PROPERTIES
++    BUILD_RPATH "${CMAKE_SOURCE_DIR}/thirdparty/lib/${CMAKE_SYSTEM_PROCESSOR}")
++target_link_options(g1_arm_sdk_clear_weight PRIVATE "-Wl,--disable-new-dtags")
++
++# Safety-gated multi-pose right-arm payload calibration.  This intentionally
++# reuses the proven safe-probe checks in the same translation unit.
++find_package(Eigen3 REQUIRED)
++find_package(orocos_kdl REQUIRED)
++find_package(kdl_parser REQUIRED)
++add_executable(g1_right_arm_payload_calibration
++    high_level/g1_right_arm_payload_calibration.cpp)
++target_link_libraries(g1_right_arm_payload_calibration PRIVATE
++    unitree_sdk2 Eigen3::Eigen orocos-kdl kdl_parser::kdl_parser)
++set_target_properties(g1_right_arm_payload_calibration PROPERTIES
++    BUILD_RPATH "${CMAKE_SOURCE_DIR}/thirdparty/lib/${CMAKE_SYSTEM_PROCESSOR}")
++target_link_options(g1_right_arm_payload_calibration PRIVATE "-Wl,--disable-new-dtags")
++
++# Same controller and gains, selected left chain/indices; no duplicated controller.
++add_executable(g1_left_arm_payload_calibration
++    high_level/g1_right_arm_payload_calibration.cpp)
++target_compile_definitions(g1_left_arm_payload_calibration PRIVATE G1_CALIBRATION_LEFT_ARM=1)
++target_link_libraries(g1_left_arm_payload_calibration PRIVATE
++    unitree_sdk2 Eigen3::Eigen orocos-kdl kdl_parser::kdl_parser)
++set_target_properties(g1_left_arm_payload_calibration PROPERTIES
++    BUILD_RPATH "${CMAKE_SOURCE_DIR}/thirdparty/lib/${CMAKE_SYSTEM_PROCESSOR}")
++target_link_options(g1_left_arm_payload_calibration PRIVATE "-Wl,--disable-new-dtags")
++
++add_executable(g1_arm_readonly_diagnostics high_level/g1_arm_readonly_diagnostics.cpp)
++target_link_libraries(g1_arm_readonly_diagnostics unitree_sdk2)
++set_target_properties(g1_arm_readonly_diagnostics PROPERTIES
++    BUILD_RPATH "${CMAKE_SOURCE_DIR}/thirdparty/lib/${CMAKE_SYSTEM_PROCESSOR}")
++target_link_options(g1_arm_readonly_diagnostics PRIVATE "-Wl,--disable-new-dtags")
++
++add_executable(g1_remote_key_check high_level/g1_remote_key_check.cpp)
++target_link_libraries(g1_remote_key_check unitree_sdk2)
++set_target_properties(g1_remote_key_check PROPERTIES
++    BUILD_RPATH "${CMAKE_SOURCE_DIR}/thirdparty/lib/${CMAKE_SYSTEM_PROCESSOR}")
++target_link_options(g1_remote_key_check PRIVATE "-Wl,--disable-new-dtags")
++
++add_executable(g1_arm_writer_match_probe high_level/g1_arm_writer_match_probe.cpp)
++target_link_libraries(g1_arm_writer_match_probe unitree_sdk2)
++set_target_properties(g1_arm_writer_match_probe PROPERTIES
++    BUILD_RPATH "${CMAKE_SOURCE_DIR}/thirdparty/lib/${CMAKE_SYSTEM_PROCESSOR}")
++target_link_options(g1_arm_writer_match_probe PRIVATE "-Wl,--disable-new-dtags")
++
+ add_executable(g1_ankle_swing_example low_level/g1_ankle_swing_example.cpp)
+ target_link_libraries(g1_ankle_swing_example unitree_sdk2)
+ 
+@@ -50,4 +105,4 @@ add_executable(g1d_height_control g1d/g1d_height_control.cpp)
+ target_link_libraries(g1d_height_control unitree_sdk2)
+ 
+ add_executable(g1_hand_sdk_example high_level/g1_hand_sdk_example.cpp)
+-target_link_libraries(g1_hand_sdk_example unitree_sdk2)
+\ No newline at end of file
++target_link_libraries(g1_hand_sdk_example unitree_sdk2)

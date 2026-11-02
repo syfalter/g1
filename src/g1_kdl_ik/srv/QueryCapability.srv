@@ -1,0 +1,32 @@
+# "left"/"left_arm" or "right"/"right_arm".
+string arm
+# Desired TCP pose in torso_link.
+geometry_msgs/Pose target_tcp
+# Position search radius. Zero uses the server default (0.03 m).
+float64 search_radius
+# Allowed tool +X direction error in radians. Zero uses the server default.
+float64 direction_tolerance
+# Allowed roll error about tool +X in radians. Zero uses the server default.
+float64 roll_tolerance
+# KDL timeout per candidate seed. Zero uses the server default.
+float64 ik_timeout
+# Maximum nearby map seeds to try. Zero uses the server default.
+uint32 max_seed_attempts
+---
+bool position_found
+bool orientation_match
+uint16 voxel_orientation_count
+uint16 matching_orientation_count
+geometry_msgs/Point nearest_voxel_center
+float64 nearest_distance
+float64 nearest_direction_bin_error
+float64 nearest_roll_bin_error
+geometry_msgs/Pose target_tool0
+sensor_msgs/JointState seed
+uint32 ik_attempts
+bool ik_success
+sensor_msgs/JointState solution
+geometry_msgs/Pose achieved_tcp
+float64 position_error
+float64 rotation_error
+string message

@@ -1,0 +1,24 @@
+{
+  "frame_id": "world",
+  "source": "CAD mock, uncalibrated",
+  "axis_center": [
+    0.36343124401569366,
+    0.225,
+    0.7422271025205874
+  ],
+  "axis_quaternion_xyzw": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+  ],
+  "entry_center": [
+    0.40343124401569364,
+    0.225,
+    0.7422271025205874
+  ],
+  "angle_deg": 120.0,
+  "preinsert_height_m": 0.1,
+  "robot_retreat_m": 0.06,
+  "geometry_note": "CAD top cropped at source Y=731.5 mm; validate moving-part boundary and entry point physically"
+}

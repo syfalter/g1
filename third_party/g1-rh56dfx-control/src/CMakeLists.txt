@@ -1,0 +1,13 @@
+function(add_hand_executable target)
+  add_executable(${target} ${target}.cpp)
+  target_link_libraries(${target} PRIVATE unitree_sdk2 ${ARGN})
+  target_compile_options(${target} PRIVATE -Wall -Wextra -Wpedantic)
+endfunction()
+
+add_hand_executable(hand_service)
+add_hand_executable(hand_web_control)
+add_hand_executable(hand_compliant_teach yaml-cpp)
+add_hand_executable(hand_hold_position)
+add_hand_executable(hand_clear_fault)
+add_hand_executable(head_camera_capture)
+add_hand_executable(vision_service)

@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>g1_unitree_control</name>
+  <version>0.1.0</version>
+  <description>Read-only G1 state tools, shadow execution, and a default-disabled guarded arm_sdk gateway.</description>
+  <maintainer email="syf@example.com">syf</maintainer>
+  <license>BSD-3-Clause</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <buildtool_depend>rosidl_default_generators</buildtool_depend>
+  <exec_depend>rosidl_default_runtime</exec_depend>
+  <member_of_group>rosidl_interface_packages</member_of_group>
+  <depend>qtbase5-dev</depend>
+  <depend>diagnostic_msgs</depend>
+  <depend>control_msgs</depend>
+  <depend>eigen</depend>
+  <depend>kdl_parser</depend>
+  <depend>moveit_msgs</depend>
+  <depend>orocos_kdl_vendor</depend>
+  <depend>pluginlib</depend>
+  <depend>rcl_interfaces</depend>
+  <depend>rclcpp</depend>
+  <depend>rclcpp_action</depend>
+  <depend>rviz_common</depend>
+  <depend>sensor_msgs</depend>
+  <depend>std_msgs</depend>
+  <depend>std_srvs</depend>
+  <depend>trajectory_msgs</depend>
+  <depend>unitree_api</depend>
+  <depend>unitree_hg</depend>
+  <depend>visualization_msgs</depend>
+
+  <exec_depend>ament_index_python</exec_depend>
+  <exec_depend>launch</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
+
+  <export><build_type>ament_cmake</build_type></export>
+</package>

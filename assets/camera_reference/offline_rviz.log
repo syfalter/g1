@@ -1,0 +1,6 @@
+QStandardPaths: wrong permissions on runtime directory /run/user/1000/, 0755 instead of 0700
+1788854262.149456 [91]      rviz2: selected interface "lo" is not multicast-capable: disabling multicast
+[INFO] [1788854264.008554251] [rviz2]: Stereo is NOT SUPPORTED
+[INFO] [1788854264.008637708] [rviz2]: OpenGl version: 4.2 (GLSL 4.2)
+[INFO] [1788854264.041819978] [rviz2]: Stereo is NOT SUPPORTED
+[INFO] [1788854372.704046288] [rclcpp]: signal_handler(signum=2)

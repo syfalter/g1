@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "camera": {
+    "name": "Intel RealSense D435I",
+    "serial": "243322073672",
+    "firmware_version": "5.15.1.55",
+    "queried_at": "2026-09-08T16:58:43+08:00",
+    "source": "RealSense SDK device calibration"
+  },
+  "profiles": {
+    "color_1280x720_30fps": {
+      "stream": "color",
+      "frame": "head_color_camera_optical_frame",
+      "format": "rgb8",
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "fx": 909.9426879882812,
+      "fy": 909.7274780273438,
+      "cx": 644.0703125,
+      "cy": 369.64947509765625,
+      "camera_matrix_row_major": [
+        909.9426879882812,
+        0.0,
+        644.0703125,
+        0.0,
+        909.7274780273438,
+        369.64947509765625,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "distortion_model": "inverse_brown_conrady",
+      "distortion_coefficients": [0.0, 0.0, 0.0, 0.0, 0.0]
+    },
+    "color_1920x1080_30fps": {
+      "stream": "color",
+      "frame": "head_color_camera_optical_frame",
+      "format": "rgb8",
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "fx": 1364.9140625,
+      "fy": 1364.5911865234375,
+      "cx": 966.1054077148438,
+      "cy": 554.4741821289062,
+      "camera_matrix_row_major": [
+        1364.9140625,
+        0.0,
+        966.1054077148438,
+        0.0,
+        1364.5911865234375,
+        554.4741821289062,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "distortion_model": "inverse_brown_conrady",
+      "distortion_coefficients": [0.0, 0.0, 0.0, 0.0, 0.0]
+    },
+    "depth_1280x720_30fps": {
+      "stream": "depth",
+      "frame": "head_depth_camera_optical_frame",
+      "format": "z16",
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "fx": 649.5869750976562,
+      "fy": 649.5869750976562,
+      "cx": 638.1451416015625,
+      "cy": 364.77197265625,
+      "camera_matrix_row_major": [
+        649.5869750976562,
+        0.0,
+        638.1451416015625,
+        0.0,
+        649.5869750976562,
+        364.77197265625,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "distortion_model": "brown_conrady",
+      "distortion_coefficients": [0.0, 0.0, 0.0, 0.0, 0.0]
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "content_verified": true,
+  "intended_pages": 16,
+  "editable_word_tables": 4,
+  "embedded_figures": 2,
+  "chinese_text_characters": 10656,
+  "sources_sha256": {
+    "REAL_TASK_APPLICATION.md": "0f74484aa95754eacc523ec5db47a11ba0acd8a5907e9169a83e655c67ed4409",
+    "src/g1_unitree_control/README.md": "5d9433c31ea42652861ff2cde72e27c1bcf0b46a08c03dd841b7077870035fcf",
+    "src/g1_upper_body_moveit_config/README.md": "0af1b6ea82af15a1309334ebcb4b4e279898799ccb4b76f14b62b056b4c93833",
+    "src/g1_kdl_ik/README.md": "96e2705b57dd0951face35664fed776a1ebea31fb25b16084ef17d48b7dfdec2",
+    "logs/camera_c_analysis_20260913_153025/REPORT.md": "cf866c8c807ddc3a999c0b99ac9f09444f3299bbe1ce84e0618d59bb22fc363e",
+    "logs/dring_torque_review_20260920/REPORT.md": "b85f5be992968840ba892e8f56df6bec8e37c3cd601c14bfaddd4de2e00e62f7",
+    "deployment/rail_jetson/INTERNAL_STOP_OPTIMIZATION_V5.md": "812779ad9b8a2a572091ec2aa91b957ab6bda760b264c432d012454b4c86b030",
+    "deployment/rail_jetson/LATENCY_MOTOR_REVIEW.md": "62f748e3973a03a08b392e345da564ab82946d1f0fa74955d118229faa74c9f7",
+    "deployment/rail_jetson/GEAR_PROTOCOL_UPDATE.md": "d91d88f291879c9140871c7e3134132d1e3647215debd6af1cd057efe5957c96",
+    "deployment/rail_jetson/README.md": "546b01719a68297fca0a539f4219dd693ddb65f05a4fad535a87b2101b1ab859",
+    "docs/trajectory_only_results_20260929.md": "a7bfb6c3cf4237a774cfa868090c14c9eae5e6b84b2c65b3fa9bae4e6d094a42"
+  },
+  "artifacts_sha256": {
+    "G1机器人复杂操作任务技术成果报告_20261013.docx": "d706401c817f0095de1d486ebf25338b38be3582f41fe72aef6eb35372538ddb",
+    "G1机器人复杂操作任务技术成果报告_20261013.md": "88e3ce4c64a3b2b91fabadd36036309934e6761b561bc0d54614fb426c7ddad6",
+    "G1机器人复杂操作任务技术成果报告_20261013.pdf": "11f5d91ce24cce07d63cf58c30b98060ee9f633b4aa01ab3ceeab1281bec4208"
+  },
+  "rendered_pages": 16,
+  "rendered_content_verified": true,
+  "toc_page_numbers_verified": true,
+  "source_numbers_verified": true
+}

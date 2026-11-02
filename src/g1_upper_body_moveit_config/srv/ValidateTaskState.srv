@@ -1,0 +1,10 @@
+moveit_msgs/RobotState robot_state
+string arm
+string stage
+string snapshot_object_id
+string target_object_id
+---
+bool valid
+string code
+string message
+moveit_msgs/ContactInformation[] contacts

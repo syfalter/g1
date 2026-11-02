@@ -1,0 +1,46 @@
+/**:
+  ros__parameters:
+    # Every transform is T_arm_tool0_tcp: translation is expressed in tool0,
+    # and quaternion is [x, y, z, w]. A profile is usable only when both
+    # enabled and calibrated are true.
+    tool_profiles.names:
+      - tool0
+      - right_hand_mount
+      - right_dexterous_palm_template
+      - right_dexterous_fingertip_template
+      - right_camera_template
+
+    # Backward-compatible native MoveIt end link for either arm.
+    tool_profiles.tool0.arm: BOTH
+    tool_profiles.tool0.enabled: true
+    tool_profiles.tool0.calibrated: true
+    tool_profiles.tool0.translation: [0.0, 0.0, 0.0]
+    tool_profiles.tool0.quaternion_xyzw: [0.0, 0.0, 0.0, 1.0]
+
+    # In the current URDF right_tool0 and right_rubber_hand share an origin.
+    tool_profiles.right_hand_mount.arm: RIGHT
+    tool_profiles.right_hand_mount.enabled: true
+    tool_profiles.right_hand_mount.calibrated: true
+    tool_profiles.right_hand_mount.translation: [0.0, 0.0, 0.0]
+    tool_profiles.right_hand_mount.quaternion_xyzw: [0.0, 0.0, 0.0, 1.0]
+
+    # The following matrices are editable placeholders only. Their dimensions
+    # have not been measured, so the planner rejects them until the user
+    # replaces the values and explicitly enables/calibrates each profile.
+    tool_profiles.right_dexterous_palm_template.arm: RIGHT
+    tool_profiles.right_dexterous_palm_template.enabled: false
+    tool_profiles.right_dexterous_palm_template.calibrated: false
+    tool_profiles.right_dexterous_palm_template.translation: [0.12, 0.0, 0.0]
+    tool_profiles.right_dexterous_palm_template.quaternion_xyzw: [0.0, 0.0, 0.0, 1.0]
+
+    tool_profiles.right_dexterous_fingertip_template.arm: RIGHT
+    tool_profiles.right_dexterous_fingertip_template.enabled: false
+    tool_profiles.right_dexterous_fingertip_template.calibrated: false
+    tool_profiles.right_dexterous_fingertip_template.translation: [0.28, 0.0, 0.0]
+    tool_profiles.right_dexterous_fingertip_template.quaternion_xyzw: [0.0, 0.0, 0.0, 1.0]
+
+    tool_profiles.right_camera_template.arm: RIGHT
+    tool_profiles.right_camera_template.enabled: false
+    tool_profiles.right_camera_template.calibrated: false
+    tool_profiles.right_camera_template.translation: [0.10, 0.0, 0.06]
+    tool_profiles.right_camera_template.quaternion_xyzw: [0.0, 0.0, 0.0, 1.0]

@@ -1,0 +1,105 @@
+Panels:
+  - Class: rviz_common/Displays
+    Name: Displays
+Visualization Manager:
+  Class: ""
+  Transformation:
+    Current:
+      Class: rviz_default_plugins/TF
+  Displays:
+    - Class: rviz_default_plugins/PointCloud2
+      Name: Historical depth reference - NOT current measurement
+      Enabled: true
+      Topic:
+        Value: /g1/task/historical_depth_reference
+        Depth: 1
+        Reliability Policy: Reliable
+        Durability Policy: Transient Local
+      Style: Flat Squares
+      Size (m): 0.004
+      Color Transformer: RGB8
+      Position Transformer: XYZ
+      Decay Time: 0
+      Alpha: 0.65
+    - Class: rviz_default_plugins/InteractiveMarkers
+      Name: Trajectory point selection
+      Enabled: true
+      Interactive Markers Namespace: /g1/task/trace_points
+      Show Descriptions: false
+      Show Axes: false
+      Show Visual Aids: false
+    - Class: rviz_default_plugins/RobotModel
+      Name: Robot - LIVE measured joints
+      Enabled: true
+      Alpha: 1
+      Visual Enabled: true
+      Collision Enabled: false
+      Description Source: Topic
+      Description Topic:
+        Value: /robot_description
+        Durability Policy: Transient Local
+        Reliability Policy: Reliable
+        Depth: 1
+    - Class: rviz_default_plugins/PointCloud2
+      Name: Measured RGB-D - one snapshot per plan
+      Enabled: true
+      Topic:
+        Value: /g1/vision_rgbd_surface
+        Depth: 1
+        Reliability Policy: Reliable
+        Durability Policy: Transient Local
+      Style: Flat Squares
+      Size (m): 0.004
+      Color Transformer: RGB8
+      Position Transformer: XYZ
+      Decay Time: 0
+      Alpha: 1
+    - Class: rviz_default_plugins/MarkerArray
+      Name: Vision target - nominal camera mount
+      Enabled: true
+      Topic:
+        Value: /g1/vision_task_preview
+        Depth: 1
+        Reliability Policy: Reliable
+        Durability Policy: Transient Local
+    - Class: moveit_rviz_plugin/RobotState
+      Name: Recorded timeline preview - NOT measured state
+      Enabled: true
+      Robot Description: robot_description
+      Robot State Topic: /g1/task/demo_preview_state
+      Robot Alpha: 0.65
+      Visual Enabled: true
+      Collision Enabled: false
+    - Class: moveit_rviz_plugin/Trajectory
+      Name: Validated planned path - NOT measured state
+      Enabled: true
+      Robot Description: robot_description
+      Robot Alpha: 0.4
+      Trajectory Topic: /g1/task/validated_path
+      State Display Time: 1x
+      Interrupt Display: true
+      Loop Animation: false
+      Show Robot Visual: true
+      Show Robot Collision: false
+  Enabled: true
+  Global Options:
+    Fixed Frame: pelvis
+    Frame Rate: 60
+    Background Color: 32; 34; 38
+  Tools:
+    - Class: rviz_default_plugins/Interact
+      Hide Inactive Objects: false
+    - Class: rviz_default_plugins/MoveCamera
+    - Class: rviz_default_plugins/Select
+    - Class: rviz_default_plugins/FocusCamera
+  Views:
+    Current:
+      Class: rviz_default_plugins/Orbit
+      Distance: 1.4
+      Focal Point: {X: 0.3, Y: 0.0, Z: 0.08}
+      Pitch: 0.3
+      Yaw: 0.7
+      Target Frame: pelvis
+Window Geometry:
+  Width: 1250
+  Height: 900

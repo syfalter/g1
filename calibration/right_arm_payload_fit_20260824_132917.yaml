@@ -1,0 +1,8 @@
+base_link: torso_link
+payload_frame: right_wrist_yaw_link
+pose_count: 12
+mass_kg: 0.882254817527
+com_xyz_m: [0.0729802049997, 0.00827978913877, -0.00280030936102]
+first_moment_kg_m: [0.0643871374451, 0.00730488385579, -0.00247058642433]
+training_rmse_nm: 0.511470697139
+regressor_condition_number: 7.31397594407

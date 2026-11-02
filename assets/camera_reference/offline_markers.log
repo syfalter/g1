@@ -1,0 +1,2 @@
+1788854262.306386 [91]    python3: selected interface "lo" is not multicast-capable: disabling multicast
+[INFO] [1788854262.416441827] [g1_camera_axis_preview_readonly]: Read-only nominal axes; no arm commands, no calibrated camera TF

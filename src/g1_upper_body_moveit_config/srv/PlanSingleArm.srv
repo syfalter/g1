@@ -1,0 +1,38 @@
+string arm
+# Named arm_tool0 -> TCP transform from config/tool_profiles.yaml.
+# Empty keeps backward-compatible tool0 semantics.
+string tool_profile
+geometry_msgs/PoseStamped target
+# false: target is an absolute pose of the selected TCP in target.header.frame_id.
+# true: position is an XYZ displacement expressed in that frame and
+# orientation is a frame-axis delta rotation of the selected TCP
+# (zero quaternion means identity).
+bool target_is_relative
+string mode
+float64 linear_step
+float64 jump_threshold  # absolute max delta per joint between sparse IK points (rad)
+float64 velocity_scaling
+float64 acceleration_scaling
+# false plans and visualizes only; true submits the validated trajectory to
+# the guarded right-arm FollowJointTrajectory action and waits for completion.
+bool execute
+---
+bool success
+string status
+string used_mode
+string linear_status
+float64 planning_time
+float64 linear_fraction
+float64 duration
+float64 peak_joint_velocity
+float64 peak_joint_acceleration
+# Backward-compatible alias of resolved_tcp_target.
+geometry_msgs/PoseStamped resolved_target
+string selected_tool_profile
+geometry_msgs/PoseStamped resolved_tcp_target
+geometry_msgs/PoseStamped resolved_tool0_target
+moveit_msgs/RobotTrajectory trajectory
+bool execution_requested
+bool execution_accepted
+bool execution_success
+string execution_status

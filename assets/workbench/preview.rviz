@@ -1,0 +1,56 @@
+Panels:
+  - Class: rviz_common/Displays
+    Name: Displays
+Visualization Manager:
+  Class: ""
+  Enabled: true
+  Name: root
+  Transformation:
+    Current:
+      Class: rviz_default_plugins/TF
+  Global Options:
+    Fixed Frame: world
+    Background Color: 45; 48; 52
+    Frame Rate: 30
+    Default Light: true
+  Displays:
+    - Class: rviz_default_plugins/Grid
+      Name: Ground
+      Enabled: true
+      Value: true
+      Cell Size: 0.25
+      Plane Cell Count: 20
+      Color: 125; 125; 125
+    - Class: rviz_default_plugins/RobotModel
+      Name: Static Robot And STEP Workbench
+      Enabled: true
+      Value: true
+      Visual Enabled: true
+      Collision Enabled: false
+      Alpha: 1
+      Links:
+        All Links Enabled: true
+      Description Source: Topic
+      Description Topic:
+        Value: /robot_description
+        Durability Policy: Transient Local
+        Reliability Policy: Reliable
+        History Policy: Keep Last
+        Depth: 1
+  Views:
+    Current:
+      Class: rviz_default_plugins/Orbit
+      Distance: 3.5
+      Focal Point:
+        X: 0.5
+        Y: 0
+        Z: 0.7
+      Pitch: 0.35
+      Yaw: 0.8
+      Target Frame: world
+  Tools:
+    - Class: rviz_default_plugins/Interact
+    - Class: rviz_default_plugins/MoveCamera
+Window Geometry:
+  Width: 1400
+  Height: 900

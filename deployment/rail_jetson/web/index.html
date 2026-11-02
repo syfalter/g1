@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>G1 滑轨控制台 · 离线</title><link rel="stylesheet" href="/style.css"></head>
+<body>
+<header><div><strong>G1 动作版本验收</strong><span class="tag">真实版本数据 · 执行与交接仅模拟</span></div><span id="connection">连接中</span></header>
+<main>
+<section class="summary"><div><small>执行状态</small><h1 id="phase">—</h1></div><div><small>控制权</small><strong id="owner">—</strong></div><div><small>当前阶段</small><strong id="stage">—</strong></div><div><small>动作包</small><code id="bundle">—</code></div></section>
+<section id="release-section"><div class="section-heading"><h2>动作版本</h2><button id="refresh-releases">刷新列表</button></div>
+<p class="meta">当前模拟版本：<code id="active-version">—</code></p>
+<label class="field">待查看版本<select id="release-select" aria-label="待查看版本"></select></label>
+<div class="table-scroll"><table><thead><tr><th>动作</th><th>槽位 / 范围</th><th>验证记录</th><th>来源会话</th></tr></thead><tbody id="release-actions"></tbody></table></div>
+<div class="toolbar"><button id="activate-release">应用到模拟执行器</button><button id="rollback-release">回滚上一模拟版本</button></div>
+<p class="meta" id="release-status">—</p>
+</section>
+<section><h2>选定动作模拟</h2><div class="toolbar"><select id="action-select" aria-label="选定动作"></select><button id="run-action">模拟当前动作</button><button id="run-nws">模拟拉环左右一组</button></div></section>
+<div class="columns"><section><h2>任务</h2><div class="toolbar"><button id="initialize">双臂同时准备</button><button id="air" class="primary">AIR</button><button id="ground" class="primary">GROUND</button><button id="stop" class="danger">停止任务</button></div><p class="meta">准备比例 0.7 / 0.7 <span>腰目标 −0.01529 rad</span></p><label class="field">业务映射<select id="mapping"><option value="push">AIR → 推进；GROUND → 拉出</option><option value="pull">AIR → 拉出；GROUND → 推进</option></select></label><div class="table-scroll"><table><thead><tr><th>任务号</th><th>操作</th><th>状态</th><th>进度</th></tr></thead><tbody id="tasks"></tbody></table></div></section>
+<section><h2>控制权交接</h2><ol class="steps"><li id="handoff-one">Jetson 停止并确认输出释放</li><li id="handoff-two">WSL 确认接管</li><li id="handoff-three">WSL 释放后，Jetson 重新接管</li></ol><label class="check"><input type="checkbox" id="handoff-support">已确认机械支撑及释放条件</label><div class="toolbar"><button id="release">释放 Jetson 控制权</button><button id="wsl-claim">模拟 WSL 接管</button><button id="wsl-release">模拟 WSL 释放</button><button id="acquire">Jetson 重新接管</button></div><p class="meta" id="authority-note">等待状态</p></section></div>
+<section id="recovery"><div class="section-heading"><h2>故障恢复</h2><button id="fault">模拟阻滞</button></div><p id="fault-detail" class="meta">无待处理故障</p><div class="recovery-grid"><div><h3>1. 确认停止</h3><span id="stop-evidence">—</span><button id="confirm-stop">重新查询停止确认</button></div><div><h3>2. 现场检查</h3><label class="check"><input type="checkbox" id="contact-clear">握持物、滑轨及手指接触状态已检查</label><label class="check"><input type="checkbox" id="support-ready">支撑稳定，准备动作路径已清空</label><button id="inspect">确认现场检查</button></div><div><h3>3. 恢复任务受理</h3><button id="reset">解除任务阻滞</button><button id="reconcile">核对两端输出均已释放</button><span class="meta" id="recovery-next">—</span></div></div></section>
+<section><div class="section-heading"><h2>冻结录制轨迹</h2><select id="curve-operation" aria-label="轨迹方向"><option value="push">推进</option><option value="pull">拉出</option></select></div><div id="curve-tabs" class="toolbar"></div><div class="plot"><canvas id="plot" aria-label="冻结关节位置轨迹"></canvas></div><div id="legend" class="legend"></div></section>
+<section><h2>事件记录</h2><div id="events" class="events"></div></section>
+<output id="message" aria-live="polite"></output>
+</main><script src="/app.js" defer></script><script src="/releases.js" defer></script></body></html>

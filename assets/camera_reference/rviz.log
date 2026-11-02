@@ -1,0 +1,18 @@
+QStandardPaths: wrong permissions on runtime directory /run/user/1000/, 0755 instead of 0700
+1788854176.323512 [0]      rviz2: eth0: does not match an available interface.
+[ERROR] [1788854176.323545345] [rmw_cyclonedds_cpp]: rmw_create_node: failed to create domain, error Error
+
+>>> [rcutils|error_handling.c:108] rcutils_set_error_state()
+This error state is being overwritten:
+
+  'error not set, at ./src/rcl/node.c:263'
+
+with this new error message:
+
+  'rcl node's rmw handle is invalid, at ./src/rcl/node.c:415'
+
+rcutils_reset_error() should be called after error handling to avoid this.
+<<<
+[ERROR] [1788854176.323592137] [rcl]: Failed to fini publisher for node: 1
+terminate called after throwing an instance of 'rclcpp::exceptions::RCLError'
+  what():  failed to initialize rcl node: rcl node's rmw handle is invalid, at ./src/rcl/node.c:415

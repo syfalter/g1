@@ -1,0 +1,4 @@
+uint64 stop_epoch
+---
+bool success
+string message

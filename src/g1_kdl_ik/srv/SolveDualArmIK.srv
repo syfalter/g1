@@ -1,0 +1,14 @@
+# Both targets are expressed in torso_link.
+geometry_msgs/Pose left_target
+geometry_msgs/Pose right_target
+bool solve_left
+bool solve_right
+# Requested motion duration in seconds. Zero selects the default duration.
+float64 duration
+---
+bool success
+string message
+# Complete model state at the trajectory endpoint.
+sensor_msgs/JointState solution
+# May exceed the request to respect max_visual_joint_speed.
+float64 actual_duration

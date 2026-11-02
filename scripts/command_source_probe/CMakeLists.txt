@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.16)
+project(command_source_probe)
+find_package(ament_cmake REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(unitree_hg REQUIRED)
+add_executable(command_source_probe main.cpp)
+ament_target_dependencies(command_source_probe rclcpp unitree_hg)

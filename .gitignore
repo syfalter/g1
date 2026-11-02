@@ -1,0 +1,51 @@
+# Local environments and build products, including nested projects.
+.venv*/
+venv/
+build/
+install/
+log/
+logs/
+__pycache__/
+*.py[cod]
+*.so
+*.o
+*.a
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.DS_Store
+.serena/
+.idea/
+.vscode/
+
+# Recordings, RGB-D, releases and caches stay on the experiment machine.
+/data/*
+!/data/README.md
+/calibration/*
+!/calibration/*.yaml
+!/calibration/README.md
+/assets/workbench/preview-*.png
+/assets/workbench/task/last_*_plan.json
+/assets/workbench/task/left_ik_probe.json
+/docs/report_20261013/assets/rendered_pages/
+/docs/report_20261013/assets/report_contact_sheet.png
+
+# Weights and vendor manuals are distributed separately from source.
+/third_party/g1-rh56dfx-control/recognize/pedal_center_package_v1/models/
+/third_party/g1-rh56dfx-control/docs/*.pdf
+
+# Never commit authentication or machine-local overrides.
+.env
+.env.*
+!.env.example
+*.key
+*.token
+*.pem
+id_rsa*
+id_ed25519*
+*.local.json
+*.local.yaml
+*.sqlite*
+*.db
+*.bag
+*.mcap

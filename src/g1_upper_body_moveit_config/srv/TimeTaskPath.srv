@@ -1,0 +1,9 @@
+string arm
+moveit_msgs/RobotState start_state
+moveit_msgs/RobotTrajectory trajectory
+float64 velocity_scaling
+float64 acceleration_scaling
+---
+bool success
+string message
+moveit_msgs/RobotTrajectory trajectory

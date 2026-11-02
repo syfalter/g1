@@ -1,0 +1,31 @@
+{
+  "schema": "g1_rail_teach_v1",
+  "identity": {
+    "urdf_sha256": "ff85f3e90223a7191f77d661718b7746dea71c0a4ca7ba16b980fbfa776f0780",
+    "hand_mapping_sha256": "cdb866d8ebf5d227324b28ee2f400dd7ce9ad21ef42b1f931e04af9673247e38",
+    "reference_link": "right_wrist_yaw_link"
+  },
+  "points": {},
+  "routes": {"A": [], "B": []},
+  "traces": {},
+  "created_at": "2026-09-18",
+  "restored_from": "data/task_sessions/20260917_134534_171344/rail_autosave/config.json",
+  "hands": {
+    "open": {
+      "code": 0, "hand": "right", "online": true,
+      "feedback_q": [0.0, 0.0, 1.0, 1.0, 0.996999979019165, 0.0],
+      "target_q": [0.0, 0.0, 1.0, 1.0, 0.9980000257492065, 0.0],
+      "error": [0, 0, 0, 0, 0, 0],
+      "temperature": [34, 34, 34, 34, 32, 34],
+      "timestamp_ms": 1789626477154
+    },
+    "grip": {
+      "code": 0, "hand": "right", "online": true,
+      "feedback_q": [0.0, 0.0, 0.765999972820282, 0.6480000019073486, 0.5849999785423279, 0.0],
+      "target_q": [0.0, 0.0, 0.765999972820282, 0.6470000147819519, 0.5839999914169312, 0.0],
+      "error": [0, 0, 0, 0, 0, 0],
+      "temperature": [34, 36, 34, 34, 34, 36],
+      "timestamp_ms": 1789626616712
+    }
+  }
+}

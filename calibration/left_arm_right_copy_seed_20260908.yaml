@@ -1,0 +1,11 @@
+# Operator-requested numerical copy, not a left-arm calibration result.
+base_link: torso_link
+payload_frame: left_wrist_yaw_link
+calibration_status: copied_right_unvalidated
+source_fit: right_arm_camera_fit_20260824_185416.yaml
+pose_count: 0
+mass_kg: 0.816012674496
+com_xyz_m: [0.0773968440561, -0.00343824765598, -0.00264170058046]
+first_moment_kg_m: [0.0631568057157, -0.00280565366533, -0.00215566115588]
+# Compute torque on the left KDL chain; do not copy right motor torque signs.
+# No left training RMSE or validation accuracy is claimed.

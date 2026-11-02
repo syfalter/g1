@@ -1,0 +1,96 @@
+{
+  "scope": "All available robot visual/collision meshes versus STEP, static poses only",
+  "pose_file": "assets/workbench/task_start_pose.json",
+  "pose": {
+    "purpose": "Synthetic offline task-start candidate; not a measured R2+A pose",
+    "right_arm_source": "Historical 20260904_182426_001 first measured pose plus shoulder pitch +0.20 rad",
+    "reference_pose_file": "assets/workbench/initial_pose.json",
+    "r2_a_pose_verified": false,
+    "left_arm_source": "Mirrored historical right arm plus shoulder pitch +0.20 rad; not measured",
+    "validation_scope": "Static cabinet clearance only; entrance trajectory and full MoveIt validity pending",
+    "joints": {
+      "right_shoulder_pitch_joint": 0.456989717,
+      "right_shoulder_roll_joint": -0.280910254,
+      "right_shoulder_yaw_joint": 0.09133178,
+      "right_elbow_joint": 0.794781804,
+      "right_wrist_roll_joint": -0.014680676,
+      "right_wrist_pitch_joint": 0.014204663,
+      "right_wrist_yaw_joint": 0.004187768,
+      "left_shoulder_pitch_joint": 0.456989717,
+      "left_shoulder_roll_joint": 0.280910254,
+      "left_shoulder_yaw_joint": -0.09133178,
+      "left_elbow_joint": 0.794781804,
+      "left_wrist_roll_joint": 0.014680676,
+      "left_wrist_pitch_joint": 0.014204663,
+      "left_wrist_yaw_joint": -0.004187768
+    }
+  },
+  "payload_envelope": {
+    "scope": "Offline symmetric left/right connectors from user dimensions; hardware model unchanged",
+    "connector_length_m": 0.05,
+    "connector_radius_m": 0.03,
+    "hand_model": "RH56DFX",
+    "hand_geometry": "Community RH56DFX model; static open pose; approximate mount alignment",
+    "mounts": "Both hands offset 0.05 m along local wrist X; mirrored original lateral mounting offsets",
+    "camera_geometry": "Not modeled separately; requires dimensions before hardware validation"
+  },
+  "requested_preview": {
+    "retreat_m": 0.06,
+    "colliding": [],
+    "clearance_m": 0.04817975932940581,
+    "closest": "left_rubber_hand/visual/0"
+  },
+  "configuration": "pitch=-90 yaw=180; cabinet bottom aligned to feet; initial gap=0.05m",
+  "step_m": 0.005,
+  "required_clearance_m": 0.02,
+  "selected": {
+    "retreat_m": 0.03,
+    "colliding": [],
+    "clearance_m": 0.021951357847700907,
+    "closest": "left_rubber_hand/visual/0"
+  },
+  "scan": [
+    {
+      "retreat_m": 0.0,
+      "colliding": [],
+      "clearance_m": 0.000679144490806077,
+      "closest": "left_rubber_hand/collision/0"
+    },
+    {
+      "retreat_m": 0.005,
+      "colliding": [],
+      "clearance_m": 0.0040479039555212865,
+      "closest": "left_rubber_hand/visual/0"
+    },
+    {
+      "retreat_m": 0.01,
+      "colliding": [],
+      "clearance_m": 0.007594696926171247,
+      "closest": "left_rubber_hand/collision/0"
+    },
+    {
+      "retreat_m": 0.015,
+      "colliding": [],
+      "clearance_m": 0.01117424086330909,
+      "closest": "left_rubber_hand/collision/0"
+    },
+    {
+      "retreat_m": 0.02,
+      "colliding": [],
+      "clearance_m": 0.014753784800446932,
+      "closest": "left_rubber_hand/collision/0"
+    },
+    {
+      "retreat_m": 0.025,
+      "colliding": [],
+      "clearance_m": 0.018333328737584774,
+      "closest": "left_rubber_hand/collision/0"
+    },
+    {
+      "retreat_m": 0.03,
+      "colliding": [],
+      "clearance_m": 0.021951357847700907,
+      "closest": "left_rubber_hand/visual/0"
+    }
+  ]
+}

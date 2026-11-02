@@ -1,0 +1,52 @@
+{
+  "capture_kind": "synthetic_transform_test",
+  "status_result": 0,
+  "observation_result": 0,
+  "observation": {
+    "code": 0,
+    "valid_3d": true,
+    "camera_frame": "head_color_camera_optical_frame",
+    "units": "m",
+    "camera_name": "Intel RealSense D435I",
+    "camera_serial": "243322073672",
+    "image_width": 1280,
+    "image_height": 720,
+    "color_intrinsics": {
+      "fx": 909.9426879882812,
+      "fy": 909.7274780273438,
+      "cx": 644.0703125,
+      "cy": 369.64947509765625,
+      "width": 1280,
+      "height": 720,
+      "distortion_model": "inverse_brown_conrady",
+      "distortion": [0.0, 0.0, 0.0, 0.0, 0.0]
+    },
+    "depth_to_color_extrinsics": {
+      "rotation": [
+        0.9993501304058156,
+        0.01998966796825583,
+        0.02999550020249566,
+        -0.02118193008272883,
+        0.9989762848985584,
+        0.03997134033584971,
+        -0.02916577953440329,
+        -0.0405807267652124,
+        0.9987505003349723
+      ],
+      "translation_m": [0.0148, -0.0002, 0.0004]
+    },
+    "points_camera": {
+      "black_center_point": [-0.027377710014011493, 0.05028525684683299, 0.622863914754368],
+      "operation_diagonal_intersection": [-0.02751857260236166, 0.02350804996769662, 0.6454019126575343],
+      "operation_point": [-0.027578942283083156, 0.012032104162352508, 0.6550610546160343]
+    },
+    "depth_scale_m_per_unit": 0.001,
+    "stage1_confidence": 0.9,
+    "stage2_confidence": 0.9,
+    "timestamp_delta_ms": 0.2,
+    "invalid_depth_keys": [],
+    "black_center_point": [604.074181, 443.093897],
+    "operation_diagonal_intersection": [605.272281, 402.785291],
+    "operation_point": [605.760514, 386.35927]
+  }
+}

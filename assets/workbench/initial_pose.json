@@ -1,0 +1,25 @@
+{
+  "purpose": "Offline initial pose only; recapture measured arms before hardware use",
+  "right_arm_source": "logs/endpoint_motion/endpoint_motion_20260904_182426_001.csv",
+  "source_event": "accepted",
+  "source_ros_time_s": 1788517466.888700247,
+  "source_columns": "Measured *_q, not target positions",
+  "r2_a_pose_verified": false,
+  "left_arm_source": "Mirrored right arm estimate, not measured",
+  "joints": {
+    "right_shoulder_pitch_joint": 0.256989717,
+    "right_shoulder_roll_joint": -0.280910254,
+    "right_shoulder_yaw_joint": 0.091331780,
+    "right_elbow_joint": 0.794781804,
+    "right_wrist_roll_joint": -0.014680676,
+    "right_wrist_pitch_joint": 0.014204663,
+    "right_wrist_yaw_joint": 0.004187768,
+    "left_shoulder_pitch_joint": 0.256989717,
+    "left_shoulder_roll_joint": 0.280910254,
+    "left_shoulder_yaw_joint": -0.091331780,
+    "left_elbow_joint": 0.794781804,
+    "left_wrist_roll_joint": 0.014680676,
+    "left_wrist_pitch_joint": 0.014204663,
+    "left_wrist_yaw_joint": -0.004187768
+  }
+}

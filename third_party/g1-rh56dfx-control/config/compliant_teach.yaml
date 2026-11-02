@@ -1,0 +1,54 @@
+defaults:
+  hand: both
+  joint: all
+  profile: fast
+  duration_seconds: 300
+  full_range: true
+
+profiles:
+  slow: 0.005
+  medium: 0.010
+  fast: 0.020
+
+controller:
+  close_delta: 40
+  open_delta: 80
+  open_floor: 20
+  filter_samples: 3
+  engage_samples: 3
+  release_samples: 3
+  baseline_adapt_step: 2
+  local_maximum_travel: 0.100
+
+thumb_arbitration:
+  enabled: true
+  dominance_ratio: 2.0
+  engage_samples: 2
+
+# Thumb force channels are mechanically coupled. Per-joint overrides are
+# applied after the common controller settings above.
+joint_overrides:
+  left:
+    thumb-bend:
+      close_delta: 80
+      opposite_force_releases: true
+    thumb-rotation:
+      opposite_force_releases: true
+  right:
+    thumb-bend:
+      close_delta: 80
+      opposite_force_releases: true
+    thumb-rotation:
+      opposite_force_releases: true
+
+timing:
+  motion_blank_ms: 200
+  extra_settle_ms: 100
+  loop_period_ms: 25
+  baseline_samples: 15
+  baseline_sample_period_ms: 25
+  safety_check_cycles: 20
+
+safety:
+  maximum_current_mA: 300
+  maximum_temperature_C: 60

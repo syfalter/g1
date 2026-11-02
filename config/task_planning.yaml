@@ -1,0 +1,138 @@
+# 面板自动监测并校验保存的修改；空闲时旧计划失效，执行中继续使用冻结快照，不自动发送控制命令。
+# 每次点击规划或加载已存任务重新读取；stage_control可用于下一次新计划，无需重启控制器。
+# arm_pd、arm_integral、waist_controller在整套启动时读取；motion提高也需重启，运行中规划只取文件和网关较小上限。
+# stage_control随计划冻结；阶段肩肘和腰yaw增益在静止边界应用，退出后恢复基础启动值。
+# 停止逻辑、反馈新鲜度时限、碰撞和总力矩保护不变。
+geometry:
+  radial_offset_mm: 30.0  # 相对原始水平射线交点的径向补偿；正值远离圆心，负值向圆心；范围[-100,100]
+  height_offset_mm: 25.0  # 相对原轴顶平面上移；正值向上，圆心和实体基座不动；范围[-30,100]
+  path_tolerance_mm: 3.0  # 路径三维位置容差，毫米；显式保留当前缺省值，不自动恢复旧8毫米；范围[2,20]
+  target_tolerance_mm: 3.0  # D环末点三维距离容差，毫米；范围[2,25]
+  position_search_fraction: 0.0  # 标称点无解时XYZ偏置占容差比例；0关闭，保留当前值；范围[0,0.9]
+  withdraw_height_mm: 100.0  # 拨环后从实际末点竖直抽离高度，毫米；范围[60,200]
+orientation:
+  hand_back_tangent_xy: true  # 接触全程手背法向XY投影与TCP到实体圆心连线垂直，误差<=5度；替代下方固定偏航约束
+  hand_back_yaw_deg: 45.0  # 仅旧固定偏航模式使用；范围[5,45]
+  left_sweep_hand_back_yaw_deg: -20.0  # 左拨初始手背法向XY投影优先朝右20度；相对会话初始胸口，正左负右
+  right_sweep_hand_back_yaw_deg: 20.0  # 右拨初始手背优先朝左20度；优先值必须在下述硬范围内
+  sweep_hand_back_min_deg: 10.0  # 反向偏航严格大于10度；与max同时为0才关闭方向硬约束
+  sweep_hand_back_max_deg: 30.0  # 严格小于30度；插入/转动/抽离密集验证，无解则失败，不回退到范围外
+  tilt_deg: 5.0  # 食指轴相对参考姿态的最大倾斜角，度；保留当前值；范围[0,60]
+  twist_deg: 10.0  # 绕参考食指轴的最大正负扭转角，度；保留当前值；范围[0,120]
+  step_deg: 2.0  # 相邻采样点允许的最大总姿态转角；范围(0,5]
+  arc_yaw_gain: 0.15  # 仅兼容旧快照；当前单侧D环不使用该值，不随圆弧旋转参考
+  max_index_tilt_deg: 45.0  # 初始直指朝向搜索的最大偏离向下角；同时搜索该角度减10度、减20度；范围[10,50]
+  planning_margin_deg: 0.1  # 求解时距最终倾角/扭转上限预留的角度，减少插值贴边；范围[0,1]
+sampling:
+  arc_segments: 120  # 每个120度圆弧切分段数；含起点共121点；范围[20,1000]
+  line_points: 60  # 插入/退出直线采样点数，包含起点；范围[2,1000]
+search:
+  max_attempts: 600  # 初始位姿IK搜索总次数上限；范围[1,5000]
+  budget_seconds: 60.0  # 初始搜索活跃时间预算，不含完整路径核验时间；范围[0.1,90]
+  batch_trials: 32  # 每搜索这么多次便先尝试完整路径，不必等总预算用尽；范围[1,5000]
+  batch_candidates: 2  # 每批优先尝试的完整候选数；范围[1,32]
+  complete_candidates: 16  # 每次规划最多尝试多少个完整候选，第一条全通过即结束；范围[1,32]
+  small_step_fast_path: true  # 小关节步长且远离限位时接受首个合格解；false会多搜姿态备选，通常更慢
+repair:
+  contact_branch_search: true  # 插入/转动/抽离联合分支回溯；旧快照默认关闭
+  contact_branch_attempts: 6  # 每个初始候选的跨段回溯次数上限；范围[1,32]
+  contact_search_seconds: 300.0  # 从首次接触搜索起的总墙钟预算，包含后续候选核验；范围[1,900]
+  contact_candidate_seconds: 45.0  # 单个初始候选的接触搜索预算，避免差分支耗尽全局时间；范围[1,900]
+  max_repairs: 8  # 每个笛卡尔段最多局部修复次数；0关闭局部修复；范围[0,30]
+  backtrack_points: 8  # 失败后向前最多找几个点的已保存备选解，再重算后缀；范围[1,100]
+smoothing:
+  smooth_contact_path: true  # 拨动/拔出连续拟合，保持原几何与碰撞核验；不增加暂停
+  smooth_insert_path: true  # 插入连续拟合，避免小折返导致整段定时变慢
+  smooth_joint_path: true  # 接近/返回沿同一关节直线使用解析五次进度
+  smoothing_joint_deviation_deg: 2.0  # 拟合相对IK样本的关节偏差上限，度；仍受TCP容差约束；范围[0.1,5]
+motion:
+  arm_velocity_rad_s: 0.40  # 臂命令速度上限，rad/s，再乘面板比例；范围[0.05,0.40]
+  waist_velocity_rad_s: 0.35  # 腰命令速度独立上限；共同加速度1.5、jerk5不变；提高需整套重启
+localization:
+  center_check_height_mm: 50.0  # 定位检查指尖距原始圆心的竖直高度，毫米；不叠加上面的径向/高度补偿；范围[40,150]
+execution:
+  endpoint_tolerance_deg: 1.4323944878270582  # 各臂关节及参与任务的腰yaw到位误差上限，单位度；后续切段/伸指沿用；首次执行起点检查不变；范围[0.1,2.8]，上界低于网关0.05rad起点门槛，不代表接触精度保证
+  endpoint_wait_seconds: 5.0  # 每段手臂轨迹结束后等待到位且静止的最长秒数，满足即继续，不固定暂停；范围[0.1,30]
+stage_control:
+  stage_control_enabled: true  # D环及滑轨示教复现；录制段复用withdraw增益，衔接/返回用基础增益，静止边界平滑切换
+  rotate_velocity_factor: 0.30  # 转动轨迹额外时间拉伸；速度乘该系数，加速度乘其平方，几何不变
+  withdraw_velocity_factor: 0.65  # 抽出额外速度比例；接近、插入、返回不变
+  rotate_proximal_kp: 550.0  # 任务侧肩三轴和肘；非负有限值，需支持该增益的新网关；腕部和力矩保护不变
+  rotate_proximal_kd: 6.0  # 阶段Kd范围[0,8]；基础增益范围不变
+  withdraw_proximal_kp: 550.0  # 只在抽回阶段应用，普通阶段恢复基础增益；非负有限值
+  withdraw_proximal_kd: 6.0
+  demo_wrist_kp: 110.0  # 仅示教录制回放段的活动臂三腕轴；0沿用基础值，Kd不变
+  demo_distal_wrist_kp: 220.0  # 仅回放段覆盖腕俯仰和腕偏航；腕滚转仍用demo_wrist_kp，0不额外覆盖
+  stage_waist_kp: 120.0  # 转动/抽离的腰yaw，guarded模式；非零值>=20，无人为上限；两项均0沿用基础值
+  stage_waist_kd: 5.0  # 非零值>=0.5，无人为上限；退出阶段恢复waist_controller基础值
+demo_replay:
+  # D环和滑轨示教回放活动臂的独立Kp，左右臂共用；优先于stage_control分组Kp。
+  # 修改后重新生成回放即生效；不改变已生成计划，不影响准备/衔接/返回和另一只手臂。
+  # -1沿用分组/基础值，0为零比例增益；保留现有Kd、0.4秒平滑过渡和力矩保护。
+  replay_shoulder_pitch_kp: 650.0
+  replay_shoulder_roll_kp: 550.0
+  replay_shoulder_yaw_kp: 550.0
+  replay_elbow_kp: 550.0
+  replay_wrist_roll_kp: 220.0
+  replay_wrist_pitch_kp: 300.0
+  replay_wrist_yaw_kp: 300.0
+  replay_waist_kp: 300.0  # 仅录制回放段腰yaw；>=20，无人为上限（须为LowCmd可表示的有限值）；-1沿用stage_waist_kp，0恢复基础腰增益；Kd沿用stage_waist_kd，未设置则用基础Kd
+rail_replay:
+  rail_replay_multiplier: 2.0  # 录制轨迹请求倍速；实际受关节速度/加速度/jerk和控制器限制
+  rail_replay_fastest: false  # true使用局部优化得到的已验证最快方案（非全局最优保证），忽略请求倍速
+  rail_trim_idle_ends: true  # 去除首尾0.3mm/0.3度/0.003rad内微动时长及冗余取点；影响贴合则保留取点，原文件和端点不变
+  rail_replay_smooth: true  # 尝试连续平滑；仍须满足0.5mm/0.5度/0.01rad贴合限制
+arm_pd:
+  # 2026-09-16 14:14日志后的基础配置；整套控制器重启生效，转动/抽出由stage_control临时覆盖肩肘。
+  # 原肩肘Kp/Kd均55/3；基础增益范围和力矩保护不变，不能保证接触稳定性。
+  left_shoulder_pitch_kp: 75.0  # 左肩俯仰Kp，Nm/rad；转动时Z误差主要贡献；基础Kp范围[0,80]
+  left_shoulder_roll_kp: 70.0  # 左肩侧抬Kp；改善水平跟踪，低于俯仰/旋转增幅
+  left_shoulder_yaw_kp: 75.0  # 左肩旋转Kp；转动与抽出Z误差主要贡献
+  left_elbow_kp: 75.0  # 左肘Kp；改善抽出上升滞后
+  left_wrist_roll_kp: 40.0  # 左腕基础滚转Kp；示教回放段由demo_wrist_kp覆盖
+  left_wrist_pitch_kp: 55.0  # 左腕基础俯仰Kp
+  left_wrist_yaw_kp: 55.0  # 左腕基础偏转Kp
+  left_shoulder_pitch_kd: 4.2  # 左肩俯仰Kd，Nm*s/rad；普通Kd范围[0,5]
+  left_shoulder_roll_kd: 4.0  # 左肩侧抬Kd
+  left_shoulder_yaw_kd: 4.2  # 左肩旋转Kd
+  left_elbow_kd: 4.2  # 左肘Kd
+  left_wrist_roll_kd: 3.5  # 左腕滚转Kd；范围[0,8]
+  left_wrist_pitch_kd: 3.0  # 左腕俯仰Kd
+  left_wrist_yaw_kd: 3.0  # 左腕偏转Kd
+  right_shoulder_pitch_kp: 75.0  # 右肩俯仰Kp；与左臂一致，重启控制器生效
+  right_shoulder_roll_kp: 70.0  # 右肩侧抬Kp；与左臂一致
+  right_shoulder_yaw_kp: 75.0  # 右肩旋转Kp；与左臂一致
+  right_elbow_kp: 75.0  # 右肘Kp；与左臂一致
+  right_wrist_roll_kp: 40.0  # 右腕基础滚转Kp；示教回放段由demo_wrist_kp覆盖
+  right_wrist_pitch_kp: 55.0  # 右腕基础俯仰Kp
+  right_wrist_yaw_kp: 55.0  # 右腕基础偏转Kp
+  right_shoulder_pitch_kd: 4.2  # 右肩俯仰Kd；与左臂一致
+  right_shoulder_roll_kd: 4.0  # 右肩侧抬Kd；与左臂一致
+  right_shoulder_yaw_kd: 4.2  # 右肩旋转Kd；与左臂一致
+  right_elbow_kd: 4.2  # 右肘Kd；与左臂一致
+  right_wrist_roll_kd: 3.5  # 右腕滚转Kd；范围[0,8]
+  right_wrist_pitch_kd: 3.0  # 右腕俯仰Kd
+  right_wrist_yaw_kd: 3.0  # 右腕偏转Kd
+waist_controller:
+  waist_kp: 80.0  # 腰Kp，Nm/rad；guarded待验证60->80，改善水平跟踪；范围[20,80]，official_pd不使用此值
+  waist_kd: 5.0  # 腰Kd，Nm*s/rad；guarded待验证4.5->5；范围[0.5,5]
+  waist_ki: 20.0  # 腰Ki，Nm/(rad*s)；范围[0,30]
+  waist_integral_torque_limit_nm: 1.2  # 腰附加积分力矩上限，Nm；范围[0.1,2]
+arm_integral:
+  left_arm_integral_enabled: true  # 左臂小积分初值，依据9月11日Approach读数估算，尚非实机闭环标定；false关闭新增积分
+  right_arm_integral_enabled: true  # 右臂复用左臂积分增益及限幅，重启控制器生效
+  passive_arm_integral_enabled: true  # 任务启动固定active_arm=left；右臂需此开关才能实际使用相同积分
+  shoulder_pitch_ki: 5.0  # 肩俯仰Ki，单位Nm/(rad*s)，范围[0,10]；0关闭该轴积分，原Kp/Kd不变
+  shoulder_roll_ki: 5.0  # 肩侧抬Ki；实测末点误差0.032455rad，Kp55下跨过0.025rad门槛约需补0.41Nm，并非完整扰动力矩辨识
+  shoulder_yaw_ki: 3.0  # 肩旋转Ki，单位Nm/(rad*s)，范围[0,10]
+  elbow_ki: 3.0  # 肘Ki，单位Nm/(rad*s)，范围[0,10]
+  wrist_roll_ki: 1.0  # 腕滚转Ki，单位Nm/(rad*s)，范围[0,10]
+  wrist_pitch_ki: 1.0  # 腕俯仰Ki，单位Nm/(rad*s)，范围[0,10]
+  wrist_yaw_ki: 2.0  # 腕偏转Ki，单位Nm/(rad*s)，范围[0,10]
+  shoulder_pitch_integral_limit_nm: 0.6  # 肩俯仰附加积分力矩绝对上限，单位Nm；肩/肘范围[0,1]
+  shoulder_roll_integral_limit_nm: 0.8  # 肩侧抬附加积分上限；只补部分残差，不把1.86度误差全当静态负载
+  shoulder_yaw_integral_limit_nm: 0.35  # 肩旋转附加积分上限，单位Nm
+  elbow_integral_limit_nm: 0.4  # 肘附加积分上限，单位Nm
+  wrist_roll_integral_limit_nm: 0.15  # 腕滚转附加积分上限，单位Nm；腕部范围[0,0.3]
+  wrist_pitch_integral_limit_nm: 0.2  # 腕俯仰附加积分上限，单位Nm
+  wrist_yaw_integral_limit_nm: 0.25  # 腕偏转附加积分上限，单位Nm；接触时仍受总力矩保护，不等同于接触力控制

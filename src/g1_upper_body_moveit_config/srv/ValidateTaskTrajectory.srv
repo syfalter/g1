@@ -1,0 +1,14 @@
+string[] joint_names
+float64[] positions
+uint32 sample_count
+string arm
+string stage
+string snapshot_object_id
+string target_object_id
+---
+bool valid
+uint32 checked_samples
+uint32 first_invalid_sample
+string code
+string message
+moveit_msgs/ContactInformation[] contacts

@@ -1,0 +1,18 @@
+right_arm_static_calibrator:
+  ros__parameters:
+    input_topic: /lowstate
+    urdf_path: /home/syf/unitree_ws/unitree_ros/robots/g1_description/g1_29dof_lock_waist_rev_1_0.urdf
+    base_link: torso_link
+    # The stock rubber hand is excluded. The fit estimates everything mounted
+    # beyond the wrist-yaw link: adapter, extension and dexterous hand.
+    tip_link: right_wrist_yaw_link
+    output_csv: /home/syf/g1_upper_body_ws/calibration/right_arm_static_samples.csv
+    output_yaml: /home/syf/g1_upper_body_ws/calibration/right_arm_payload_fit.yaml
+
+    sample_window_s: 1.5
+    max_abs_dq: 0.03
+    max_q_span: 0.008
+    max_tau_spread: 0.75
+    minimum_pose_distance_rad: 0.20
+    minimum_fit_poses: 8
+    expected_mode_machine: 6

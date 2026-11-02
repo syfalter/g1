@@ -1,0 +1,127 @@
+{
+  "source_repository": "https://github.com/ookkshirsagar/rh56dfx_description",
+  "source_commit": "77491738aaed410d1b668749160e7b943f6fdd46",
+  "source_status": "Community model, not manufacturer-verified",
+  "pose": "Static open fingers; proximal flexion=0.15/1.1169, distal=0, thumb=0",
+  "collision": "Union of individual source collision-link convex hulls; conservative per-link approximation",
+  "mount": "Approximate: palm-base rear bounding plane, centred transverse to finger direction",
+  "excluded": "Upstream hand_root, wrist_base_link, wrist_yaw (G1 supplies wrist)",
+  "hands": {
+    "left": {
+      "mount_transform": [
+        [
+          6.123233995736766e-17,
+          1.0,
+          0.0,
+          0.012514838017523289
+        ],
+        [
+          -1.0,
+          6.123233995736766e-17,
+          -0.0,
+          -9.313225746154785e-10
+        ],
+        [
+          -0.0,
+          0.0,
+          1.0,
+          0.01606615260243416
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "visual": {
+        "bounds_m": [
+          [
+            0.0,
+            -0.042789093664837866,
+            -0.040767909678970315
+          ],
+          [
+            0.19250879742105834,
+            0.027390691451728344,
+            0.111192914053468
+          ]
+        ],
+        "triangles": 384236
+      },
+      "collision": {
+        "bounds_m": [
+          [
+            0.0,
+            -0.042789093664837866,
+            -0.040767909678970315
+          ],
+          [
+            0.19250879742105834,
+            0.027390691451728344,
+            0.1111725995961503
+          ]
+        ],
+        "triangles": 35924
+      }
+    },
+    "right": {
+      "mount_transform": [
+        [
+          6.123233995736766e-17,
+          1.0,
+          0.0,
+          0.012514838017523289
+        ],
+        [
+          -1.0,
+          6.123233995736766e-17,
+          -0.0,
+          9.313225746154785e-10
+        ],
+        [
+          -0.0,
+          0.0,
+          1.0,
+          -0.013933847658336163
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "visual": {
+        "bounds_m": [
+          [
+            0.0,
+            -0.027390691451728344,
+            -0.04075208771973848
+          ],
+          [
+            0.1925093490032443,
+            0.043088809282129825,
+            0.11119281694108614
+          ]
+        ],
+        "triangles": 384160
+      },
+      "collision": {
+        "bounds_m": [
+          [
+            0.0,
+            -0.027390691451728344,
+            -0.04075208771973848
+          ],
+          [
+            0.1925093490032443,
+            0.043088809282129825,
+            0.11117250456558808
+          ]
+        ],
+        "triangles": 35915
+      }
+    }
+  }
+}

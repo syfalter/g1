@@ -1,0 +1,14 @@
+# Observed upstream commits on 2026-11-02, not a claim of latest releases.
+repositories:
+  unitree_sdk2:
+    type: git
+    url: https://github.com/unitreerobotics/unitree_sdk2.git
+    version: 9754cd153af3da471b0fe5f3aa535e426fb11db3
+  unitree_ws/unitree_ros:
+    type: git
+    url: https://github.com/unitreerobotics/unitree_ros.git
+    version: daadf41ee9afce8f90fdc09a98506012691fa122
+  unitree_ws/unitree_ros2:
+    type: git
+    url: https://github.com/unitreerobotics/unitree_ros2.git
+    version: 668d1ec5a05d1c38d3306bdca7d59f2ba3581a88

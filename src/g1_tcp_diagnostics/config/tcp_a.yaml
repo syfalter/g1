@@ -1,0 +1,12 @@
+# 仅诊断采样门限，不是控制器保护或实物精度保证。长度m，角度rad。
+window_s: 1.0
+max_age_s: 0.15
+max_gap_s: 0.10
+max_speed_rad_s: 0.02  # 原始dq告警值，不单独拒绝平均采样
+max_joint_span_rad: 0.002  # 实际关节角窗口最大跨度，含腰与所选手臂
+max_tip_drift_m: 0.00075
+max_wrist_rotation_rad: 0.002
+max_condition: 100.0
+outlier_m: 0.003
+hand_change: 0.02
+reference_skew_s: 0.03

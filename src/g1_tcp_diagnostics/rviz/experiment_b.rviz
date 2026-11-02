@@ -1,0 +1,17 @@
+Panels:
+  - Class: g1_tcp_diagnostics/CameraBPanel
+    Name: RGB - Experiment B
+Visualization Manager:
+  Class: ""
+  Displays: []
+  Enabled: true
+  Global Options:
+    Fixed Frame: head_color_camera_optical_frame
+    Frame Rate: 15
+    Background Color: 32; 34; 38
+  Tools: []
+Window Geometry:
+  Width: 1600
+  Height: 1000
+  Hide Left Dock: false
+  Hide Right Dock: true

@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RH56 双手关节控制</title>
+  <link rel="stylesheet" href="/app.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">UNITREE G1 · RH56DFX</p>
+        <h1>双手关节控制台</h1>
+        <p class="subtitle">独立调整 12 个关节通道，并在线查看反馈位置。</p>
+      </div>
+      <div class="safety-card">
+        <div class="status-line">
+          <span id="status-dot" class="status-dot"></span>
+          <strong id="status-text">正在连接服务…</strong>
+        </div>
+        <button id="arm-button" class="arm-button" type="button" disabled>解锁硬件控制</button>
+        <label class="follow-control">
+          <input id="live-follow" type="checkbox">
+          <span>拖动时连续跟随</span>
+        </label>
+      </div>
+    </header>
+
+    <section class="notice" aria-label="安全提示">
+      <span class="notice-mark">!</span>
+      <p><strong>运动前确认双手周围没有人员或物体，并随时准备使用物理急停。</strong>
+        页面示意图只反映执行器反馈，不代表外部指骨的真实角度。</p>
+    </section>
+
+    <section class="pose-library settings-row" aria-labelledby="settings-title">
+      <div>
+        <h2 id="settings-title">永久参数</h2>
+        <p>空闲接触阈值和每只手的抓握参数都会自动保存到控制服务。</p>
+      </div>
+      <label class="grip-control threshold-control">
+        <span>接触波动阈值</span>
+        <input id="contact-threshold" type="range" min="1" max="1000" step="1" value="50"
+               data-setting="contact_threshold">
+        <output data-setting-output="contact_threshold">50</output>
+      </label>
+      <span id="settings-state" class="settings-state">正在读取…</span>
+    </section>
+
+    <section class="pose-library" aria-labelledby="pose-title">
+      <div class="pose-heading">
+        <div>
+          <p class="eyebrow">POSE LIBRARY</p>
+          <h2 id="pose-title">姿势库</h2>
+          <p>保存双手姿势和 6 个关节启动延时；硬件解锁后可一键执行。</p>
+        </div>
+        <div class="pose-save-controls">
+          <input id="pose-name" class="pose-name" type="text" maxlength="32"
+                 placeholder="姿势名称（可选）" aria-label="姿势名称">
+          <button id="save-pose" class="save-pose" type="button">＋ 保存当前姿势</button>
+        </div>
+      </div>
+      <div id="pose-list" class="pose-list"></div>
+    </section>
+
+    <section id="hands" class="hands-grid" aria-live="polite"></section>
+
+    <footer>
+      <span>位置约定：q = 0 闭合，q = 1 张开</span>
+      <span id="last-update">尚未读取硬件</span>
+    </footer>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="/app.js" defer></script>
+</body>
+</html>

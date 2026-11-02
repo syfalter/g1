@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="g1_upper_body">
+  <!-- Keep the vendor kinematics as the source of truth.  This wrapper is the
+       single persistent model used by RViz, MoveIt and the IK server. -->
+  <xacro:arg name="vendor_urdf" default="/home/syf/unitree_ws/unitree_ros/robots/g1_description/g1_29dof_lock_waist_rev_1_0.urdf"/>
+  <xacro:include filename="$(arg vendor_urdf)"/>
+
+  <!-- The vendor waist links are visual-only.  One conservative primitive
+       spans the locked waist assembly while remaining a separate fixed link,
+       so the vendor kinematics and meshes stay untouched. -->
+  <link name="waist_collision">
+    <collision>
+      <origin xyz="0 0 0.040" rpy="0 0 0"/>
+      <geometry><cylinder radius="0.095" length="0.105"/></geometry>
+    </collision>
+  </link>
+  <joint name="waist_collision_joint" type="fixed">
+    <parent link="waist_yaw_link"/>
+    <child link="waist_collision"/>
+  </joint>
+
+  <link name="left_hand_collision">
+    <collision>
+      <origin xyz="0.052 0 0" rpy="0 0 0"/>
+      <geometry><box size="0.105 0.060 0.045"/></geometry>
+    </collision>
+  </link>
+  <joint name="left_hand_collision_joint" type="fixed">
+    <parent link="left_rubber_hand"/>
+    <child link="left_hand_collision"/>
+  </joint>
+
+  <link name="right_hand_collision">
+    <collision>
+      <origin xyz="0.052 0 0" rpy="0 0 0"/>
+      <geometry><box size="0.105 0.060 0.045"/></geometry>
+    </collision>
+  </link>
+  <joint name="right_hand_collision_joint" type="fixed">
+    <parent link="right_rubber_hand"/>
+    <child link="right_hand_collision"/>
+  </joint>
+
+  <!-- Conservative envelope for the installed right-hand extension and
+       dexterous hand.  It starts at the vendor palm mount (x=0.0415 m) and
+       extends 0.30 m forward from there. -->
+  <link name="right_payload_collision">
+    <collision>
+      <origin xyz="0.1915 -0.003 0" rpy="0 0 0"/>
+      <geometry><box size="0.300 0.140 0.120"/></geometry>
+    </collision>
+  </link>
+  <joint name="right_payload_collision_joint" type="fixed">
+    <parent link="right_wrist_yaw_link"/>
+    <child link="right_payload_collision"/>
+  </joint>
+
+  <link name="left_tool0"/>
+  <joint name="left_tool0_joint" type="fixed">
+    <parent link="left_rubber_hand"/>
+    <child link="left_tool0"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <link name="right_tool0"/>
+  <joint name="right_tool0_joint" type="fixed">
+    <parent link="right_rubber_hand"/>
+    <child link="right_tool0"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+</robot>

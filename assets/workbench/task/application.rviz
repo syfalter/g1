@@ -1,0 +1,75 @@
+Panels:
+  - Class: rviz_common/Displays
+    Name: Displays
+  - Class: rviz_common/Views
+    Name: Views
+Visualization Manager:
+  Class: ""
+  Enabled: true
+  Name: root
+  Transformation:
+    Current:
+      Class: rviz_default_plugins/TF
+  Global Options:
+    Fixed Frame: world
+    Background Color: 45; 48; 52
+    Frame Rate: 30
+  Displays:
+    - Class: rviz_default_plugins/Grid
+      Name: Ground
+      Enabled: true
+      Value: true
+      Cell Size: 0.25
+      Plane Cell Count: 20
+    - Class: rviz_default_plugins/RobotModel
+      Name: Offline Robot And Task
+      Enabled: true
+      Value: true
+      Visual Enabled: true
+      Collision Enabled: false
+      Alpha: 1
+      Description Source: Topic
+      Description Topic:
+        Value: /robot_description
+        Durability Policy: Transient Local
+        Reliability Policy: Reliable
+        History Policy: Keep Last
+        Depth: 1
+    - Class: rviz_default_plugins/MarkerArray
+      Name: Axis Entry And Arc
+      Enabled: true
+      Value: true
+      Marker Topic:
+        Value: /workbench/markers
+        Reliability Policy: Reliable
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Depth: 10
+  Views:
+    Current:
+      Class: rviz_default_plugins/Orbit
+      Distance: 2.2
+      Focal Point:
+        X: 0.25
+        Y: 0.1
+        Z: 0.8
+      Pitch: 0.75
+      Yaw: 2.1
+      Target Frame: world
+    Saved:
+      - Class: rviz_default_plugins/Orbit
+        Name: Handle Detail
+        Distance: 0.8
+        Focal Point:
+          X: 0.39
+          Y: 0.225
+          Z: 0.8
+        Pitch: 0.85
+        Yaw: 2.1
+        Target Frame: world
+  Tools:
+    - Class: rviz_default_plugins/Interact
+    - Class: rviz_default_plugins/MoveCamera
+Window Geometry:
+  Width: 1400
+  Height: 900

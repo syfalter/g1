@@ -1,0 +1,17 @@
+<class_libraries>
+<library path="g1_tcp_a_panel">
+  <class name="g1_tcp_diagnostics/TcpAPanel" type="g1_tcp_diagnostics::TcpAPanel" base_class_type="rviz_common::Panel">
+    <description>实验A：胯部系实际状态采样与TCP一致性；真机伸指/导纳/保持需明确确认并复用原任务控制进程。</description>
+  </class>
+</library>
+<library path="g1_camera_b_panel">
+  <class name="g1_tcp_diagnostics/CameraBPanel" type="g1_tcp_diagnostics::CameraBPanel" base_class_type="rviz_common::Panel">
+    <description>实验B：离线 RGB/深度一致性；无硬件输入或控制输出。</description>
+  </class>
+</library>
+<library path="g1_camera_c_panel">
+  <class name="g1_tcp_diagnostics/CameraCPanel" type="g1_tcp_diagnostics::CameraCPanel" base_class_type="rviz_common::Panel">
+    <description>实验C：RGB与腕部运动学一致性，只读诊断；正式配对未验收时拒绝采样。</description>
+  </class>
+</library>
+</class_libraries>
